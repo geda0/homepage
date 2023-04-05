@@ -61,6 +61,14 @@
             padding: 15px;
             text-align: center;
         }
+
+        .canvas-container {
+            top: 0;
+            left: 0;
+            min-height: 700px;
+            height: 100%;
+            overflow: auto;
+        }
     </style>
 </head>
 
@@ -75,7 +83,11 @@
     </header>
 
     <main>
-        <canvas id="canvas"></canvas>
+        <main>
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+            </div>
+        </main>
     </main>
     <script>
         // Smooth scrolling
@@ -122,15 +134,19 @@
             ctx.fillText(`My name is Marwan Elgendy`, canvas.width / (2 * ratio), 200);
             ctx.fillText(`I'm a Computerist & Software Engineer`, canvas.width / (2 * ratio), 250);
 
+            ctx.font = '32px Roboto';
+            ctx.fillText("Projects (incomplete list)", canvas.width / (2 * ratio), 450);
+            ctx.font = '24px Roboto';
+
             // Draw project boxes
-            const boxWidth = 150;
+            const boxWidth = 300;
             const boxHeight = 40;
             const boxMargin = 20;
             ctx.font = '20px Roboto';
 
             projects.forEach((project, index) => {
                 const boxX = (canvas.width / ratio - boxWidth) / 2;
-                const boxY = 350 + index * (boxHeight + boxMargin);
+                const boxY = 500 + index * (boxHeight + boxMargin);
 
                 ctx.fillStyle = hoveredProject === project ? '#6a0dad' : '#f5f5f5';
                 ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
